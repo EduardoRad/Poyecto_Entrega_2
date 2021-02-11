@@ -2,12 +2,17 @@
 
 Data Proveidor::generaDataEnviament(Data dataprevista, int diesmaxim)
 {
-	
-	return Data();
+	Data data;
+	int min = -diesmaxim;
+	int aumento = min + rand() % + (diesmaxim - min);
+	data = dataprevista + aumento;
+	return data;
 }
 
 bool Proveidor::procesaComanda(Comanda c, Magatzem& m)
 {
-
-	return false;
+	Data dataEntrega;
+	dataEntrega = generaDataEnviament(c.getDataEntregaPrevista(), 10);
+	vector<Bicicleta*>paquet;
+	return m.rebreComanda(c, paquet, dataEntrega);
 }
